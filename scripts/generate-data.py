@@ -66,5 +66,5 @@ def generate_entry():
 
 entries = [generate_entry() for _ in range(10000)]
 
-with open("taxi_records.json", "w") as f:
+with open("/app/scripts/taxi_records.json", "w") as f:
     json.dump(entries, f, indent=2)

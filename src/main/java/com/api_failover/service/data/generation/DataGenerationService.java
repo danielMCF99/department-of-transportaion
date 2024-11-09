@@ -1,5 +1,8 @@
 package com.api_failover.service.data.generation;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -10,8 +13,12 @@ public class DataGenerationService {
 
   private static final Logger logger = LoggerFactory.getLogger(DataGenerationService.class);
 
-  private static final String SCRIPT_PATH = "scripts/generate_taxi_data.py";
+  private static final String SCRIPT_PATH = "scripts/generate-data.py";
 
+  /**
+   * Service that uses the generate-data python script to generate new data
+   * This service has a scheduled based on the cron expression defined
+   */
   @Scheduled(cron = "*/30 * * * * *")
   public void generateData() {
     try {
@@ -23,14 +30,12 @@ public class DataGenerationService {
       Process process = processBuilder.start();
 
       // Capture the output of the script
-      /*
-       * BufferedReader reader = new BufferedReader(new
-       * InputStreamReader(process.getInputStream()));
-       * String line;
-       * while ((line = reader.readLine()) != null) {
-       * System.out.println(line); // Print the output for logging purposes
-       * }
-       */
+
+      BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+      String line;
+      while ((line = reader.readLine()) != null) {
+        System.out.println(line); // Print the output for logging purposes
+      }
 
       // Wait for the script to finish
       int exitCode = process.waitFor();

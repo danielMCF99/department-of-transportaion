@@ -43,9 +43,13 @@ RUN pip install geopy
 ENV JAVA_OPTS=""
 ENV APP_HOME=/app
 
+# Create directory for python script
 WORKDIR $APP_HOME/scripts
 
 COPY --from=build /app/scripts/generate-data.py generate-data.py
+
+# Ensure /app/scripts is writable and accessible
+RUN chmod -R 777 /app/scripts
 
 # Create app directory
 WORKDIR $APP_HOME
