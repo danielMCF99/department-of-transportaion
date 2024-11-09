@@ -1,5 +1,5 @@
 -- Create table for taxi records
-CREATE TABLE taxi_records (
+CREATE TABLE taxi_rides (
     id SERIAL PRIMARY KEY,
     start_latitude DECIMAL(10, 7),
     start_longitude DECIMAL(10, 7),
@@ -15,7 +15,7 @@ CREATE TABLE taxi_records (
 -- Create table for important places related to each taxi record
 CREATE TABLE important_places (
     id SERIAL PRIMARY KEY,
-    taxi_record_id INT REFERENCES taxi_records(id) ON DELETE CASCADE,
+    taxi_rides_id INT REFERENCES taxi_rides(id) ON DELETE CASCADE,
     latitude DECIMAL(10, 7),
     longitude DECIMAL(10, 7),
     place VARCHAR(255)

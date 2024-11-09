@@ -12,12 +12,40 @@ RUN mvn dependency:go-offline -B
 COPY . .
 RUN mvn clean package -DskipTests
 
+USER 1001
+
 # Run the application
 FROM eclipse-temurin:17-jdk-jammy
+
+# Update package list and install Python 3.12
+RUN apt-get update && \
+  apt-get install -y \
+  software-properties-common && \
+  add-apt-repository ppa:deadsnakes/ppa && \
+  apt-get update && \
+  apt-get install -y python3.12 && \
+  apt-get clean
+
+# Verify Python installation
+# RUN python3.12 --version
+
+# Install pip for Python 3.12
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
+  python3.12 get-pip.py && \
+  rm get-pip.py
+
+# Set Python 3.12 as the default python3
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.12 1
+
+RUN pip install geopy
 
 # Set environment variables
 ENV JAVA_OPTS=""
 ENV APP_HOME=/app
+
+WORKDIR $APP_HOME/scripts
+
+COPY --from=build /app/scripts/generate-data.py generate-data.py
 
 # Create app directory
 WORKDIR $APP_HOME
@@ -27,6 +55,8 @@ COPY --from=build /app/target/*.jar app.jar
 
 # Expose the application port
 EXPOSE 8080
+
+USER 1001
 
 # Run the application
 ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]

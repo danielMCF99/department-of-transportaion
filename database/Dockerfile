@@ -6,8 +6,8 @@ RUN apt update
 USER postgres
 
 # Bad practice. Update when possible
-ENV POSTGRES_USER=admin
-ENV POSTGRES_PASSWORD=admin
+ENV POSTGRES_USER=myuser
+ENV POSTGRES_PASSWORD=mypassword
 ENV POSTGRES_DB=transportation-db
 
 EXPOSE 5432
