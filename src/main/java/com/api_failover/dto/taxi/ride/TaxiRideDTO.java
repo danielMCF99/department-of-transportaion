@@ -1,6 +1,7 @@
 package com.api_failover.dto.taxi.ride;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.sql.Date;
 
 public class TaxiRideDTO implements Serializable {
@@ -11,7 +12,7 @@ public class TaxiRideDTO implements Serializable {
 
   private Date endDate;
 
-  private Double price;
+  private BigDecimal price;
 
   public TaxiRideDTO() {
   }
@@ -36,11 +37,11 @@ public class TaxiRideDTO implements Serializable {
     this.endDate = endDate;
   }
 
-  public Double getPrice() {
+  public BigDecimal getPrice() {
     return price;
   }
 
-  public void setPrice(Double price) {
+  public void setPrice(BigDecimal price) {
     this.price = price;
   }
 }

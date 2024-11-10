@@ -10,15 +10,6 @@ public class TaxiRideLocation {
   @EmbeddedId
   private TaxiRideLocationPK id;
 
-  @Column(name = "latitude")
-  private Double latitude;
-
-  @Column(name = "longitude")
-  private Double longitude;
-
-  @Column(name = "place")
-  private String place;
-
   @Column(name = "start_location")
   private Boolean start_location;
 
@@ -35,30 +26,6 @@ public class TaxiRideLocation {
 
   public void setId(TaxiRideLocationPK id) {
     this.id = id;
-  }
-
-  public Double getLatitude() {
-    return latitude;
-  }
-
-  public void setLatitude(Double latitude) {
-    this.latitude = latitude;
-  }
-
-  public Double getLongitude() {
-    return longitude;
-  }
-
-  public void setLongitude(Double longitude) {
-    this.longitude = longitude;
-  }
-
-  public String getPlace() {
-    return place;
-  }
-
-  public void setPlace(String place) {
-    this.place = place;
   }
 
   public Boolean getStart_location() {

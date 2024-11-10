@@ -1,5 +1,6 @@
 package com.api_failover.dto.taxi.ride;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 
@@ -9,7 +10,7 @@ public class TaxiRideCreationDTO {
 
   private Date end_date;
 
-  private Double price;
+  private BigDecimal price;
 
   private TaxiRideLocationCreationDTO start;
 
@@ -36,11 +37,11 @@ public class TaxiRideCreationDTO {
     this.end_date = end_date;
   }
 
-  public Double getPrice() {
+  public BigDecimal getPrice() {
     return price;
   }
 
-  public void setPrice(Double price) {
+  public void setPrice(BigDecimal price) {
     this.price = price;
   }
 

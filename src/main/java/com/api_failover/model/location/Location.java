@@ -1,12 +1,14 @@
 package com.api_failover.model.location;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity(name = "location")
+@Entity(name = "ride_location")
 public class Location {
 
   @Id
@@ -15,10 +17,10 @@ public class Location {
   private Long id;
 
   @Column(name = "latitude")
-  private Double latitude;
+  private BigDecimal latitude;
 
   @Column(name = "longitude")
-  private Double longitude;
+  private BigDecimal longitude;
 
   @Column(name = "place")
   private String place;
@@ -35,19 +37,19 @@ public class Location {
     this.id = id;
   }
 
-  public Double getLatitude() {
+  public BigDecimal getLatitude() {
     return latitude;
   }
 
-  public void setLatitude(Double latitude) {
+  public void setLatitude(BigDecimal latitude) {
     this.latitude = latitude;
   }
 
-  public Double getLongitude() {
+  public BigDecimal getLongitude() {
     return longitude;
   }
 
-  public void setLongitude(Double longitude) {
+  public void setLongitude(BigDecimal longitude) {
     this.longitude = longitude;
   }
 

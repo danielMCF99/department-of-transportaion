@@ -47,8 +47,6 @@ public class TaxiRideLocationServiceImpl implements TaxiRideLocationService {
     taxiRideLocationStart.setId(new TaxiRideLocationPK(taxiRide.getId(), startLocation.getId()));
     taxiRideLocationStart.setStart_location(true);
     taxiRideLocationStart.setEnd_location(false);
-    taxiRideLocationStart.setLatitude(startLocation.getLatitude());
-    taxiRideLocationStart.setLongitude(startLocation.getLongitude());
 
     lTaxiRideLocations.add(taxiRideLocationStart);
 
@@ -57,8 +55,6 @@ public class TaxiRideLocationServiceImpl implements TaxiRideLocationService {
     taxiRideLocationEnd.setId(new TaxiRideLocationPK(taxiRide.getId(), endLocation.getId()));
     taxiRideLocationEnd.setStart_location(false);
     taxiRideLocationEnd.setEnd_location(true);
-    taxiRideLocationEnd.setLatitude(endLocation.getLatitude());
-    taxiRideLocationEnd.setLongitude(endLocation.getLongitude());
 
     lTaxiRideLocations.add(taxiRideLocationEnd);
 
@@ -71,8 +67,6 @@ public class TaxiRideLocationServiceImpl implements TaxiRideLocationService {
       newTaxiRideLocation.setId(new TaxiRideLocationPK(taxiRide.getId(), newLocation.getId()));
       newTaxiRideLocation.setStart_location(false);
       newTaxiRideLocation.setEnd_location(false);
-      newTaxiRideLocation.setLatitude(elem.getLatitude());
-      newTaxiRideLocation.setLongitude(elem.getLongitude());
 
       lTaxiRideLocations.add(newTaxiRideLocation);
     }

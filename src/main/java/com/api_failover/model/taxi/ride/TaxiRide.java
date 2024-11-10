@@ -1,5 +1,6 @@
 package com.api_failover.model.taxi.ride;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 
 import jakarta.persistence.Column;
@@ -23,7 +24,7 @@ public class TaxiRide {
   private Date end_date;
 
   @Column(name = "price")
-  private Double price;
+  private BigDecimal price;
 
   public TaxiRide() {
   }
@@ -36,11 +37,11 @@ public class TaxiRide {
     this.id = id;
   }
 
-  public Double getPrice() {
+  public BigDecimal getPrice() {
     return price;
   }
 
-  public void setPrice(Double price) {
+  public void setPrice(BigDecimal price) {
     this.price = price;
   }
 

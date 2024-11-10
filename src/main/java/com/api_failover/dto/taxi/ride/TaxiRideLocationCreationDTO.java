@@ -1,10 +1,12 @@
 package com.api_failover.dto.taxi.ride;
 
+import java.math.BigDecimal;
+
 public class TaxiRideLocationCreationDTO {
 
-  private Double latitude;
+  private BigDecimal latitude;
 
-  private Double longitude;
+  private BigDecimal longitude;
 
   private String place;
 
@@ -12,19 +14,19 @@ public class TaxiRideLocationCreationDTO {
 
   }
 
-  public Double getLatitude() {
+  public BigDecimal getLatitude() {
     return latitude;
   }
 
-  public void setLatitude(Double latitude) {
+  public void setLatitude(BigDecimal latitude) {
     this.latitude = latitude;
   }
 
-  public Double getLongitude() {
+  public BigDecimal getLongitude() {
     return longitude;
   }
 
-  public void setLongitude(Double longitude) {
+  public void setLongitude(BigDecimal longitude) {
     this.longitude = longitude;
   }
 
