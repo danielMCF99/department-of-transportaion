@@ -6,6 +6,8 @@ To initialize the application you need to have Docker installed on your computer
 
 After installing Docker, simply go to the base directory of the repository and run "docker-compose up -d" in the terminal. The database and application containers should start from there.
 
+To change the cron expressions of the Batch jobs that generate random data and saves it into the database go to the file: src\main\java\com\api_failover\service\data\generation\DataGenerationService.java
+
 ### Development Stages
 
 #### Stage 1 - Creation of the project structure
