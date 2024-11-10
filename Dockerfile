@@ -57,6 +57,9 @@ WORKDIR $APP_HOME
 # Copy the Spring Boot jar from the build stage
 COPY --from=build /app/target/*.jar app.jar
 
+RUN mkdir logs
+RUN chmod -R 777 $APP_HOME/logs
+
 # Expose the application port
 EXPOSE 8080
 
