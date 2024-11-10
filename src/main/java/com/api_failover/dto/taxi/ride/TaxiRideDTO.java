@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 
+import com.api_failover.dto.taxi.ride.location.TaxiRideLocationViewDTO;
+
 public class TaxiRideDTO implements Serializable {
 
   private Long id;

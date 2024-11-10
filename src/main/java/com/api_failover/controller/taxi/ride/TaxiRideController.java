@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api_failover.dto.taxi.ride.TaxiRideDTO;
-import com.api_failover.dto.taxi.ride.TaxiRideLocationViewDTO;
 import com.api_failover.dto.taxi.ride.TaxiRideQueryRequest;
 import com.api_failover.dto.taxi.ride.TaxiRideQueryResponse;
 import com.api_failover.service.taxi.ride.TaxiRideService;

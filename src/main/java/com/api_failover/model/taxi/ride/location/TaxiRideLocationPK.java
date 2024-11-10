@@ -7,34 +7,34 @@ import jakarta.persistence.Embeddable;
 @Embeddable
 public class TaxiRideLocationPK {
 
-  private Long taxi_ride_id;
-  private Long location_id;
+  private Long taxiRideId;
+  private Long locationId;
 
   // Default constructor
   public TaxiRideLocationPK() {
   }
 
   // Parameterized constructor
-  public TaxiRideLocationPK(Long taxi_ride_id, Long location_id) {
-    this.taxi_ride_id = taxi_ride_id;
-    this.location_id = location_id;
+  public TaxiRideLocationPK(Long taxiRideId, Long locationId) {
+    this.taxiRideId = taxiRideId;
+    this.locationId = locationId;
   }
 
   // Getters and Setters
-  public Long getTaxi_ride_id() {
-    return taxi_ride_id;
+  public Long getTaxiRideId() {
+    return taxiRideId;
   }
 
-  public void setTaxi_ride_id(Long taxi_ride_id) {
-    this.taxi_ride_id = taxi_ride_id;
+  public void setTaxiRideId(Long taxiRideId) {
+    this.taxiRideId = taxiRideId;
   }
 
-  public Long getLocation_id() {
-    return location_id;
+  public Long getLocationId() {
+    return locationId;
   }
 
-  public void setLocation_id(Long location_id) {
-    this.location_id = location_id;
+  public void setLocationId(Long locationId) {
+    this.locationId = locationId;
   }
 
   // Override equals and hashCode for composite key functionality
@@ -45,12 +45,12 @@ public class TaxiRideLocationPK {
     if (o == null || getClass() != o.getClass())
       return false;
     TaxiRideLocationPK that = (TaxiRideLocationPK) o;
-    return Objects.equals(taxi_ride_id, that.taxi_ride_id) &&
-        Objects.equals(location_id, that.location_id);
+    return Objects.equals(taxiRideId, that.taxiRideId) &&
+        Objects.equals(locationId, that.locationId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(taxi_ride_id, location_id);
+    return Objects.hash(taxiRideId, locationId);
   }
 }

@@ -1,4 +1,4 @@
-package com.api_failover.dto.taxi.ride;
+package com.api_failover.dto.taxi.ride.location;
 
 import java.math.BigDecimal;
 

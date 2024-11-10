@@ -1,9 +1,7 @@
 package com.api_failover.repository.taxi.ride.location.view;
 
-import java.math.BigDecimal;
 import java.util.List;
 
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.api_failover.model.taxi.ride.location.view.TaxiRideLocationView;

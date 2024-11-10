@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 
+import com.api_failover.dto.taxi.ride.location.TaxiRideLocationCreationDTO;
+
 public class TaxiRideCreationDTO {
 
   private Date start_date;

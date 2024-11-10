@@ -14,8 +14,8 @@ import org.springframework.stereotype.Service;
 
 import com.api_failover.dto.taxi.ride.TaxiRideCreationDTO;
 import com.api_failover.dto.taxi.ride.TaxiRideDTO;
-import com.api_failover.dto.taxi.ride.TaxiRideLocationViewDTO;
 import com.api_failover.dto.taxi.ride.TaxiRideQueryRequest;
+import com.api_failover.dto.taxi.ride.location.TaxiRideLocationViewDTO;
 import com.api_failover.model.taxi.ride.TaxiRide;
 import com.api_failover.model.taxi.ride.location.view.TaxiRideLocationView;
 import com.api_failover.repository.taxi.ride.TaxiRideRepository;
@@ -46,8 +46,8 @@ public class TaxiRideServiceImpl implements TaxiRideService {
   public TaxiRide storeTaxiRideInDatabase(TaxiRideCreationDTO taxiRideCreationDTO) {
 
     TaxiRide taxiRide = new TaxiRide();
-    taxiRide.setStart_date(taxiRideCreationDTO.getStart_date());
-    taxiRide.setEnd_date(taxiRideCreationDTO.getEnd_date());
+    taxiRide.setStartDate(taxiRideCreationDTO.getStart_date());
+    taxiRide.setEndDate(taxiRideCreationDTO.getEnd_date());
     taxiRide.setPrice(taxiRideCreationDTO.getPrice());
 
     return taxiRideRepository.save(taxiRide);
@@ -78,8 +78,8 @@ public class TaxiRideServiceImpl implements TaxiRideService {
           TaxiRideDTO taxiRideDTO = new TaxiRideDTO();
           taxiRideDTO.setId(taxiRide.getId());
           taxiRideDTO.setPrice(taxiRide.getPrice());
-          taxiRideDTO.setStartDate(taxiRide.getStart_date());
-          taxiRideDTO.setEndDate(taxiRide.getEnd_date());
+          taxiRideDTO.setStartDate(taxiRide.getStartDate());
+          taxiRideDTO.setEndDate(taxiRide.getEndDate());
 
           List<TaxiRideLocationView> lTaxiRideLocation = taxiRideLocationViewRepository
               .findAllByTaxiRideId(taxiRide.getId());
@@ -111,10 +111,10 @@ public class TaxiRideServiceImpl implements TaxiRideService {
     logger.info("Entered mapping method");
     TaxiRideLocationViewDTO response = new TaxiRideLocationViewDTO();
 
-    response.setTaxi_ride_id(elem.getId().getTaxi_ride_id());
-    response.setLocation_id(elem.getId().getLocation_id());
-    response.setStart_location(elem.getStart_location());
-    response.setEnd_location(elem.getEnd_location());
+    response.setTaxiRideId(elem.getId().getTaxiRideId());
+    response.setLocationId(elem.getId().getLocationId());
+    response.setStartLocation(elem.getStartLocation());
+    response.setEndLocation(elem.getEndLocation());
     response.setLatitude(elem.getLatitude());
     response.setLongitude(elem.getLongitude());
     response.setPlace(elem.getPlace());

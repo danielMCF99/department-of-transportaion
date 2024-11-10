@@ -11,10 +11,10 @@ public class TaxiRideLocation {
   private TaxiRideLocationPK id;
 
   @Column(name = "start_location")
-  private Boolean start_location;
+  private Boolean startLocation;
 
   @Column(name = "end_location")
-  private Boolean end_location;
+  private Boolean endLocation;
 
   public TaxiRideLocation() {
 
@@ -28,20 +28,20 @@ public class TaxiRideLocation {
     this.id = id;
   }
 
-  public Boolean getStart_location() {
-    return start_location;
+  public Boolean getStartLocation() {
+    return startLocation;
   }
 
-  public void setStart_location(Boolean start_location) {
-    this.start_location = start_location;
+  public void setStartLocation(Boolean startLocation) {
+    this.startLocation = startLocation;
   }
 
-  public Boolean getEnd_location() {
-    return end_location;
+  public Boolean getEndLocation() {
+    return endLocation;
   }
 
-  public void setEnd_location(Boolean end_location) {
-    this.end_location = end_location;
+  public void setEndLocation(Boolean endLocation) {
+    this.endLocation = endLocation;
   }
 
 }

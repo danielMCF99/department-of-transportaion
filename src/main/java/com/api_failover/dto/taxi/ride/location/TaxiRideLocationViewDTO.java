@@ -1,45 +1,41 @@
-package com.api_failover.model.taxi.ride.location.view;
+package com.api_failover.dto.taxi.ride.location;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
+public class TaxiRideLocationViewDTO implements Serializable {
 
-@Entity(name = "v_taxi_ride_location")
-public class TaxiRideLocationView {
-
-  @EmbeddedId
-  private TaxiRideLocationViewPK id;
-
-  @Column(name = "latitude")
-  private BigDecimal latitude;
-
-  @Column(name = "longitude")
-  private BigDecimal longitude;
-
-  @Column(name = "place")
-  private String place;
-
-  @Column(name = "start_location")
-  private Boolean startLocation;
-
-  @Column(name = "end_location")
-  private Boolean endLocation;
-
-  @Column(name = "taxi_ride_id", insertable = false, updatable = false)
   private Long taxiRideId;
 
-  public TaxiRideLocationView() {
+  private Long locationId;
 
+  private BigDecimal latitude;
+
+  private BigDecimal longitude;
+
+  private String place;
+
+  private Boolean startLocation;
+
+  private Boolean endLocation;
+
+  public TaxiRideLocationViewDTO() {
   }
 
-  public TaxiRideLocationViewPK getId() {
-    return id;
+  public Long getTaxiRideId() {
+    return taxiRideId;
   }
 
-  public void setId(TaxiRideLocationViewPK id) {
-    this.id = id;
+  public void setTaxiRideId(Long taxiRideId) {
+    this.taxiRideId = taxiRideId;
+  }
+
+  public Long getLocationId() {
+    return locationId;
+  }
+
+  public void setLocationId(Long locationId) {
+    this.locationId = locationId;
   }
 
   public BigDecimal getLatitude() {
@@ -82,11 +78,4 @@ public class TaxiRideLocationView {
     this.endLocation = endLocation;
   }
 
-  public Long getTaxiRideId() {
-    return taxiRideId;
-  }
-
-  public void setTaxiRideId(Long taxiRideId) {
-    this.taxiRideId = taxiRideId;
-  }
 }
