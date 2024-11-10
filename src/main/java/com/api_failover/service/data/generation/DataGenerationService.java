@@ -131,8 +131,8 @@ public class DataGenerationService {
           TaxiRide taxiRide = taxiRideService.storeTaxiRideInDatabase(taxiRideCreationDTO);
           logger.info("Saved TaxiRide into database successfully");
 
-          taxiRideLocationService.storeTaxiRideLocationsInDatabase(taxiRide.getId(), startLocation.getId(),
-              endLocation.getId(),
+          taxiRideLocationService.storeTaxiRideLocationsInDatabase(taxiRide, startLocation,
+              endLocation,
               taxiRideCreationDTO);
           logger.info("Saved TaxiRideLocation associations into database successfully");
         } catch (DataAccessException e) {
