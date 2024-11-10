@@ -12,9 +12,6 @@ public class TaxiRideLocationView {
   @EmbeddedId
   private TaxiRideLocationViewPK id;
 
-  @Column(name = "price")
-  private BigDecimal price;
-
   @Column(name = "latitude")
   private BigDecimal latitude;
 
@@ -30,6 +27,9 @@ public class TaxiRideLocationView {
   @Column(name = "end_location")
   private Boolean end_location;
 
+  @Column(name = "taxi_ride_id", insertable = false, updatable = false)
+  private Long taxiRideId;
+
   public TaxiRideLocationView() {
 
   }
@@ -40,14 +40,6 @@ public class TaxiRideLocationView {
 
   public void setId(TaxiRideLocationViewPK id) {
     this.id = id;
-  }
-
-  public BigDecimal getPrice() {
-    return price;
-  }
-
-  public void setPrice(BigDecimal price) {
-    this.price = price;
   }
 
   public BigDecimal getLatitude() {
@@ -90,4 +82,11 @@ public class TaxiRideLocationView {
     this.end_location = end_location;
   }
 
+  public Long getTaxi_ride_id() {
+    return taxiRideId;
+  }
+
+  public void setTaxi_ride_id(Long taxi_ride_id) {
+    this.taxiRideId = taxi_ride_id;
+  }
 }

@@ -11,13 +11,5 @@ import com.api_failover.model.taxi.ride.location.view.TaxiRideLocationViewPK;
 
 public interface TaxiRideLocationViewRepository extends JpaRepository<TaxiRideLocationView, TaxiRideLocationViewPK> {
 
-  /**
-   * Used when both minPrice and maxPrice are given as query parameters
-   * 
-   * @param minPrice
-   * @param maxPrice
-   * @param pageable
-   * @return
-   */
-  List<TaxiRideLocationView> findAllByPriceBetween(BigDecimal minPrice, BigDecimal maxPrice, Pageable pageable);
+  List<TaxiRideLocationView> findAllByTaxiRideId(Long taxi_ride_id);
 }

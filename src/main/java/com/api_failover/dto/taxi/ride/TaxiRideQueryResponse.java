@@ -5,18 +5,18 @@ import java.util.List;
 
 public class TaxiRideQueryResponse implements Serializable {
 
-  private List<TaxiRideLocationViewDTO> lTaxiRideLocations;
+  private List<TaxiRideDTO> lTaxiRide;
 
-  public TaxiRideQueryResponse(List<TaxiRideLocationViewDTO> lTaxiRideLocations) {
-    this.lTaxiRideLocations = lTaxiRideLocations;
+  public TaxiRideQueryResponse(List<TaxiRideDTO> lTaxiRide) {
+    this.lTaxiRide = lTaxiRide;
   }
 
-  public List<TaxiRideLocationViewDTO> getlTaxiRideLocations() {
-    return lTaxiRideLocations;
+  public List<TaxiRideDTO> getlTaxiRide() {
+    return lTaxiRide;
   }
 
-  public void setlTaxiRideLocations(List<TaxiRideLocationViewDTO> lTaxiRideLocations) {
-    this.lTaxiRideLocations = lTaxiRideLocations;
+  public void setlTaxiRide(List<TaxiRideDTO> lTaxiRide) {
+    this.lTaxiRide = lTaxiRide;
   }
 
 }

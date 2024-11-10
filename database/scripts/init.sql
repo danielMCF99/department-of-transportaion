@@ -12,6 +12,8 @@ CREATE TABLE taxi_rides (
     price NUMERIC(10, 2)
 );
 
+CREATE INDEX price_idx ON taxi_rides (price);
+
 CREATE TABLE taxi_ride_location (
     taxi_ride_id bigint REFERENCES taxi_rides(id) ON DELETE CASCADE,
     location_id bigint REFERENCES ride_location(id) ON DELETE CASCADE,
@@ -24,7 +26,6 @@ DROP VIEW IF EXISTS v_taxi_ride_location;
 CREATE OR REPLACE VIEW v_taxi_ride_location AS
 SELECT 
     trl.taxi_ride_id,
-    tr.price, 
     trl.location_id, 
     trl.start_location, 
     trl.end_location, 
@@ -32,5 +33,4 @@ SELECT
     rl.longitude, 
     rl.place
 FROM taxi_ride_location trl
-    LEFT JOIN taxi_rides tr ON tr.id = trl.taxi_ride_id
     LEFT JOIN ride_location rl ON rl.id = trl.location_id;

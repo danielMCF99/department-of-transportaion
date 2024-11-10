@@ -9,8 +9,6 @@ public class TaxiRideLocationViewDTO implements Serializable {
 
   private Long location_id;
 
-  private BigDecimal price;
-
   private BigDecimal latitude;
 
   private BigDecimal longitude;
@@ -38,14 +36,6 @@ public class TaxiRideLocationViewDTO implements Serializable {
 
   public void setLocation_id(Long location_id) {
     this.location_id = location_id;
-  }
-
-  public BigDecimal getPrice() {
-    return price;
-  }
-
-  public void setPrice(BigDecimal price) {
-    this.price = price;
   }
 
   public BigDecimal getLatitude() {

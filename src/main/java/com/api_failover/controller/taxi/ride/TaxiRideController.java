@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.api_failover.dto.taxi.ride.TaxiRideDTO;
 import com.api_failover.dto.taxi.ride.TaxiRideLocationViewDTO;
 import com.api_failover.dto.taxi.ride.TaxiRideQueryRequest;
 import com.api_failover.dto.taxi.ride.TaxiRideQueryResponse;
@@ -30,7 +31,7 @@ public class TaxiRideController {
   @PostMapping("/taxi-ride/query")
   public ResponseEntity<TaxiRideQueryResponse> postMethodName(@RequestBody TaxiRideQueryRequest queryRequest) {
 
-    List<TaxiRideLocationViewDTO> lTaxiRideLocations = taxiRideService.findAllWithPriceBetween(queryRequest);
+    List<TaxiRideDTO> lTaxiRideLocations = taxiRideService.findAllWithPriceBetween(queryRequest);
     TaxiRideQueryResponse response = new TaxiRideQueryResponse(lTaxiRideLocations);
     return ResponseEntity.ok(response);
   }

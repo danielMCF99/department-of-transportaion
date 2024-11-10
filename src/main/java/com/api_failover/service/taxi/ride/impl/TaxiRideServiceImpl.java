@@ -2,7 +2,6 @@ package com.api_failover.service.taxi.ride.impl;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.api_failover.dto.taxi.ride.TaxiRideCreationDTO;
+import com.api_failover.dto.taxi.ride.TaxiRideDTO;
 import com.api_failover.dto.taxi.ride.TaxiRideLocationViewDTO;
 import com.api_failover.dto.taxi.ride.TaxiRideQueryRequest;
 import com.api_failover.model.taxi.ride.TaxiRide;
@@ -22,7 +22,6 @@ import com.api_failover.repository.taxi.ride.TaxiRideRepository;
 import com.api_failover.repository.taxi.ride.location.view.TaxiRideLocationViewRepository;
 import com.api_failover.service.data.generation.DataGenerationService;
 import com.api_failover.service.taxi.ride.TaxiRideService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.transaction.Transactional;
 
@@ -30,7 +29,6 @@ import jakarta.transaction.Transactional;
 public class TaxiRideServiceImpl implements TaxiRideService {
 
   private static final Logger logger = LoggerFactory.getLogger(DataGenerationService.class);
-  private final ObjectMapper objectMapper = new ObjectMapper();
 
   @Autowired
   private TaxiRideRepository taxiRideRepository;
@@ -59,7 +57,7 @@ public class TaxiRideServiceImpl implements TaxiRideService {
    * Service that looks for Taxi Rides whose price is between the given price
    * range
    */
-  public List<TaxiRideLocationViewDTO> findAllWithPriceBetween(TaxiRideQueryRequest queryRequest) {
+  public List<TaxiRideDTO> findAllWithPriceBetween(TaxiRideQueryRequest queryRequest) {
 
     logger.info("Querying database to get Taxi Ride information");
     BigDecimal minPrice = queryRequest.getMinPrice() != null ? queryRequest.getMinPrice() : BigDecimal.ZERO;
@@ -68,17 +66,33 @@ public class TaxiRideServiceImpl implements TaxiRideService {
 
     Pageable pageable = PageRequest.of(queryRequest.getPage(), queryRequest.getSize());
 
-    List<TaxiRideLocationViewDTO> response = new ArrayList<>();
+    List<TaxiRideDTO> response = new ArrayList<>();
     try {
-      List<TaxiRideLocationView> lTaxiRideLocation = taxiRideLocationViewRepository.findAllByPriceBetween(minPrice,
+
+      List<TaxiRide> lTaxiRides = taxiRideRepository.findAllByPriceBetween(minPrice,
           maxPrice, pageable);
 
-      response = lTaxiRideLocation.stream()
-          .map(elem -> this.mapElement(elem))
-          .collect(Collectors.toList());
+      if (!lTaxiRides.isEmpty()) {
+        for (TaxiRide taxiRide : lTaxiRides) {
 
-      response.sort(Comparator.comparing(TaxiRideLocationViewDTO::getPrice).reversed());
+          TaxiRideDTO taxiRideDTO = new TaxiRideDTO();
+          taxiRideDTO.setId(taxiRide.getId());
+          taxiRideDTO.setPrice(taxiRide.getPrice());
+          taxiRideDTO.setStartDate(taxiRide.getStart_date());
+          taxiRideDTO.setEndDate(taxiRide.getEnd_date());
+
+          List<TaxiRideLocationView> lTaxiRideLocation = taxiRideLocationViewRepository
+              .findAllByTaxiRideId(taxiRide.getId());
+
+          List<TaxiRideLocationViewDTO> lTaxiRideLocations = lTaxiRideLocation.stream()
+              .map(elem -> this.mapElement(elem)).collect(Collectors.toList());
+
+          taxiRideDTO.setTaxiRideLocations(lTaxiRideLocations);
+          response.add(taxiRideDTO);
+        }
+      }
       return response;
+
     } catch (Exception e) {
       logger.info("Error querying the database for Taxi Ride information");
       return response;
@@ -104,7 +118,6 @@ public class TaxiRideServiceImpl implements TaxiRideService {
     response.setLatitude(elem.getLatitude());
     response.setLongitude(elem.getLongitude());
     response.setPlace(elem.getPlace());
-    response.setPrice(elem.getPrice());
 
     return response;
   }

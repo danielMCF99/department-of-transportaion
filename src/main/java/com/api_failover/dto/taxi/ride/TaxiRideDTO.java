@@ -3,6 +3,7 @@ package com.api_failover.dto.taxi.ride;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.List;
 
 public class TaxiRideDTO implements Serializable {
 
@@ -14,7 +15,13 @@ public class TaxiRideDTO implements Serializable {
 
   private BigDecimal price;
 
+  private List<TaxiRideLocationViewDTO> taxiRideLocations;
+
   public TaxiRideDTO() {
+  }
+
+  public TaxiRideDTO(List<TaxiRideLocationViewDTO> taxiRideLocations) {
+    this.taxiRideLocations = taxiRideLocations;
   }
 
   public Long getId() {
@@ -44,4 +51,17 @@ public class TaxiRideDTO implements Serializable {
   public void setPrice(BigDecimal price) {
     this.price = price;
   }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public List<TaxiRideLocationViewDTO> getTaxiRideLocations() {
+    return taxiRideLocations;
+  }
+
+  public void setTaxiRideLocations(List<TaxiRideLocationViewDTO> taxiRideLocations) {
+    this.taxiRideLocations = taxiRideLocations;
+  }
+
 }

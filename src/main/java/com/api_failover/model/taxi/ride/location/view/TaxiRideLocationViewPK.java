@@ -2,13 +2,16 @@ package com.api_failover.model.taxi.ride.location.view;
 
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class TaxiRideLocationViewPK {
 
+  @Column(name = "taxi_ride_id", insertable = false, updatable = false)
   private Long taxi_ride_id;
 
+  @Column(name = "location_id", insertable = false, updatable = false)
   private Long location_id;
 
   // Default constructor
