@@ -5,13 +5,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.api_failover.dto.error.ErrorDTO;
 
-import jakarta.persistence.EntityNotFoundException;
-
 @RestControllerAdvice
 public class ExceptionController {
 
-  @ExceptionHandler(value = EntityNotFoundException.class)
-  private ErrorDTO handleEntityNotFoundException(EntityNotFoundException exception) {
+  @ExceptionHandler(value = Exception.class)
+  private ErrorDTO handleEntityNotFoundException(Exception exception) {
     return new ErrorDTO(exception.getMessage());
   }
 }
